@@ -1,6 +1,11 @@
-# SPU_CSC3220_W25_T4
+2 / 3:
 
-Group members:
+-User entity has 1:N relationship with External Data entity
 
-1.) Nahome Yohannes @NahomeYo
-2.) Binh Truong @Binhtruong16
+-User entity has 1:N relationship with Schedule entity
+
+-Schedule entity has 1:N relationship with Task entity
+
+-User entity has 1:N relationship with MoodEntry entity
+
+-User entity has 1:N relationship with JournalEntry entity
