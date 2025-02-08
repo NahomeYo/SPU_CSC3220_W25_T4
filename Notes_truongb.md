@@ -9,3 +9,9 @@
 -User entity has 1:N relationship with MoodEntry entity
 
 -User entity has 1:N relationship with JournalEntry entity
+
+
+
+2 / 7:
+
+- Why do we need users to track the time they take on assignments? Perhaps to learn how to manage their time and be more productive?

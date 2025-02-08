@@ -6,3 +6,9 @@ Connecting to external systems (e.g., Canvas) is not allowed. All functionality 
 Combine the journal entry and mood entry (mood should be a part of the journal entry, as a single entity).
 Add a few more attributes to the schedule.
 Mood should be associated with a task.
+
+2/7:
+
+moodCategory should be a derived attribute, because it borrows from the regular attribute, moodRating
+deadlineCountdown is also derived, for it borrows from the regular attribute deadline
+duration is also derived, for it borrows from startTime and endTime (making this a way for students to reflect on the actual amount of time it takes for them to study)
