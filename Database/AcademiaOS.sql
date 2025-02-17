@@ -42,7 +42,5 @@ CREATE TABLE IF NOT EXISTS TASK (
     endTime           TEXT
 );
 
-INSERT INTO TASK (taskID, scheduleId, title, deadline, priority, duration, deadlineCountDown, status, startTime, endTime) VALUES (1, 1, 'Final DB Schema and Queries', '2025-02-19', 3, NULL, NULL, 'Pending', NULL, NULL);
-
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
