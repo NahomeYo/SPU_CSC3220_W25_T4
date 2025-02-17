@@ -1,7 +1,7 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:47:33 2025
+-- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:49:47 2025
 --
--- Text encoding used: windows-1256
+-- Text encoding used: UTF-8
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
