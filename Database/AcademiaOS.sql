@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:36:20 2025
+-- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:47:33 2025
 --
 -- Text encoding used: windows-1256
 --
@@ -7,7 +7,7 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table: REFLECTION
-CREATE TABLE REFLECTION (
+CREATE TABLE IF NOT EXISTS REFLECTION (
     reflectionId     INTEGER PRIMARY KEY AUTOINCREMENT,
     taskId           INTEGER REFERENCES TASK (taskID),
     moodCategory     TEXT,
@@ -18,7 +18,7 @@ CREATE TABLE REFLECTION (
 
 
 -- Table: SCHEDULE
-CREATE TABLE SCHEDULE (
+CREATE TABLE IF NOT EXISTS SCHEDULE (
     scheduleId        INTEGER PRIMARY KEY AUTOINCREMENT,
     title             TEXT    NOT NULL,
     description       TEXT,
@@ -32,7 +32,7 @@ INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurre
 INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (2, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
 
 -- Table: TASK
-CREATE TABLE TASK (
+CREATE TABLE IF NOT EXISTS TASK (
     taskID            INTEGER PRIMARY KEY AUTOINCREMENT,
     scheduleId        INTEGER REFERENCES SCHEDULE (scheduleId),
     title             TEXT    NOT NULL,
