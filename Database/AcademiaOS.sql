@@ -1,7 +1,7 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 13:46:42 2025
+-- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:36:20 2025
 --
--- Text encoding used: UTF-8
+-- Text encoding used: windows-1256
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
@@ -12,7 +12,8 @@ CREATE TABLE REFLECTION (
     taskId           INTEGER REFERENCES TASK (taskID),
     moodCategory     TEXT,
     entryJournalText TEXT,
-    moodRating       INTEGER CHECK (moodRating BETWEEN 1 AND 5) 
+    moodRating       INTEGER CHECK (moodRating BETWEEN 1 AND 5),
+    date             TEXT
 );
 
 
@@ -27,6 +28,8 @@ CREATE TABLE SCHEDULE (
     recurrencePattern TEXT
 );
 
+INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (1, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
+INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (2, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
 
 -- Table: TASK
 CREATE TABLE TASK (
@@ -43,6 +46,7 @@ CREATE TABLE TASK (
     endTime           TEXT
 );
 
+INSERT INTO TASK (taskID, scheduleId, title, deadline, priority, duration, deadlineCountDown, status, startTime, endTime) VALUES (1, 1, 'Final DB Schema and Queries', '2025-02-19', 3, NULL, NULL, 'Pending', NULL, NULL);
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;
