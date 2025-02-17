@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:49:47 2025
+-- File generated with SQLiteStudio v3.4.16 on Mon Feb 17 14:56:06 2025
 --
 -- Text encoding used: UTF-8
 --
@@ -7,6 +7,8 @@ PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
 -- Table: REFLECTION
+DROP TABLE IF EXISTS REFLECTION;
+
 CREATE TABLE IF NOT EXISTS REFLECTION (
     reflectionId     INTEGER PRIMARY KEY AUTOINCREMENT,
     taskId           INTEGER REFERENCES TASK (taskID),
@@ -18,6 +20,8 @@ CREATE TABLE IF NOT EXISTS REFLECTION (
 
 
 -- Table: SCHEDULE
+DROP TABLE IF EXISTS SCHEDULE;
+
 CREATE TABLE IF NOT EXISTS SCHEDULE (
     scheduleId        INTEGER PRIMARY KEY AUTOINCREMENT,
     title             TEXT    NOT NULL,
@@ -25,18 +29,20 @@ CREATE TABLE IF NOT EXISTS SCHEDULE (
     date              TEXT    NOT NULL,
     isRecurring       INTEGER DEFAULT (0) 
                               CHECK (isRecurring IN (0, 1) ),
-    recurrencePattern TEXT
+    recurrencePattern TEXT    CHECK (recurrencePattern IN ('daily', 'weekly', 'monthly') ) 
 );
 
 INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (1, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
 INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (2, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
 
 -- Table: TASK
+DROP TABLE IF EXISTS TASK;
+
 CREATE TABLE IF NOT EXISTS TASK (
     taskID            INTEGER PRIMARY KEY AUTOINCREMENT,
     scheduleId        INTEGER REFERENCES SCHEDULE (scheduleId),
     title             TEXT    NOT NULL,
-    deadline          TEXT,
+    deadline          TEXT    NOT NULL,
     priority          INTEGER CHECK (priority BETWEEN 1 AND 5),
     duration          INTEGER,
     deadlineCountDown INTEGER,
