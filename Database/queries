@@ -1,0 +1,33 @@
+INSERT INTO SCHEDULE (title, date, isRecurring, recurrencePattern) VALUES ('CSC 3220', '2025-02-15', 1, 'weekly');
+INSERT INTO SCHEDULE (title, date, isRecurring, recurrencePattern) VALUES ('UFDN 3100', '2025-02-15', 1 , 'weekly');
+
+INSERT INTO TASK (scheduleId, title, deadline, priority, status) VALUES (1, 'Draft DB Schema', '2025-02-17', 5, 'Completed');
+INSERT INTO TASK (scheduleId, title, deadline, priority, status) VALUES (1, 'Final DB Schema', '2025-02-19', 4, 'In Progress');
+INSERT INTO TASK (scheduleId, title, deadline, priority, status) VALUES (2, 'Review Midterm studyguide', '2025-02-19', 3, 'Pending');
+
+INSERT INTO REFLECTION (taskId, entryJournalText, moodRating) VALUES (1, 'Schema design needs more queries.', 4);
+INSERT INTO REFLECTION (taskId, entryJournalText, moodRating) VALUES (3, 'Feeling nervous about the upcoming Midterm. Perhaps I should move up the task and start sooner', 2);
+
+SELECT * FROM SCHEDULE;
+SELECT title t_title, deadline t_deadline FROM TASK;
+SELECT title, deadline, status FROM TASK WHERE priority = 5;
+SELECT title, deadline, status FROM TASK WHERE priority = 5 AND status = 'Completed';
+SELECT entryJournalText, moodRating FROM REFLECTION;
+SELECT entryJournalText, moodRating, date FROM REFLECTION WHERE moodRating < 3;
+
+UPDATE TASK SET status = 'Completed' WHERE title = 'Final DB Schema';
+UPDATE TASK SET priority = 2 WHERE title = 'Review Midterm studyguide';
+
+UPDATE SCHEDULE SET recurrencePattern = 'daily' WHERE title = 'UFDN 3100';
+UPDATE SCHEDULE SET isRecurring = 0 WHERE title = 'CSC 3220';
+
+UPDATE REFLECTION SET moodRating = 5 WHERE entryJournalText = 'Schema design needs more queries.';
+UPDATE REFLECTION SET entryJournalText = 'Midterm prep is going better than expected!' WHERE taskId = 3;
+
+DELETE FROM TASK WHERE title = 'Draft DB Schema';
+DELETE FROM TASK WHERE status = 'Pending';
+
+DELETE FROM SCHEDULE WHERE title = 'UFDN 3100';
+
+DELETE FROM REFLECTION WHERE entryJournalText = 'Schema design needs more queries.';
+DELETE FROM REFLECTION WHERE moodRating < 3;
