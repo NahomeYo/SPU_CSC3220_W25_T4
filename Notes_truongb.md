@@ -10,8 +10,33 @@
 
 -User entity has 1:N relationship with JournalEntry entity
 
-
-
 2 / 7:
 
 - Why do we need users to track the time they take on assignments? Perhaps to learn how to manage their time and be more productive?
+
+2 / 14:
+
+- Delete User Entity/Table.
+
+Schedule:
+scheduleId = Integer primary key
+
+Task:
+taskId = Integer primary key
+scheduleId = Integer foregin key
+
+Reflection:
+reflectionId - Integer primary key
+taskId = Integer foreign key
+
+2 / 16:
+
+isRecurring attribute is INTEGER data type and has constraints:
+
+- DEFAULT, set to 0
+
+- CHECK, checking if value is 0 (not recurring) or 1 (yes recurring)
+
+recurrencePattern is TEXT data type and has constraints:
+
+- CHECK, checking if value is one of these values (daily, weekly, monthly). These are the ONLY allowed values.
