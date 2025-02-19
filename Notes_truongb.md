@@ -40,3 +40,11 @@ isRecurring attribute is INTEGER data type and has constraints:
 recurrencePattern is TEXT data type and has constraints:
 
 - CHECK, checking if value is one of these values (daily, weekly, monthly). These are the ONLY allowed values.
+
+  
+2/18 :
+
+
+i think our code is totally right now but Do you think we need to
+- The SCHEDULE table has two identical rows, which might not be necessary. So either remove the redundant row or differentiate the data (change the title or date).
+
