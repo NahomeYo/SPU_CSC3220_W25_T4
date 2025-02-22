@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Fri Feb 21 11:58:36 2025
+-- File generated with SQLiteStudio v3.4.16 on Sat Feb 22 12:57:20 2025
 --
 -- Text encoding used: UTF-8
 --
@@ -38,12 +38,12 @@ CREATE TABLE TASK (
     deadlineCountdown INTEGER AS (deadline - strftime('%s', 'now') ) STORED,
     status            TEXT    DEFAULT ('Pending') 
                               CHECK (status IN ('Pending', 'In Progress', 'Completed') ),
-    moodCategory      TEXT    AS (CASE WHEN duration > 9000 THEN 'Exhausted' WHEN duration BETWEEN 3600 AND 9000 THEN 'Fit' WHEN duration < 3600 THEN 'Energetic' ELSE NULL END) STORED,
     energyScale       INTEGER CHECK (energyScale BETWEEN 1 AND 5),
     entryJournalText  TEXT,
-    motivationMessage TEXT    AS (CASE WHEN energyScale >= 4 AND
-                                            duration < 3600 THEN [You're tired and spent an hour or less on the assignment? Get some more work done ;)] WHEN energyScale >= 4 AND
-                                                                                                                                                             duration >= 3600 THEN [You could use a break! Relax ;)] ELSE NULL END) STORED
+    moodCategory      TEXT    AS (CASE WHEN energyScale >= 4 AND
+                                            duration > 9000 THEN 'Exhausted' WHEN energyScale >= 4 AND
+                                                                                  duration <= 3600 THEN 'Energetic' WHEN energyScale BETWEEN 2 AND 3 THEN 'Fit' ELSE NULL END) STORED,
+    motivationMessage TEXT    AS (CASE WHEN moodCategory = 'Exhausted' THEN 'You could use a break! Relax ;)' WHEN moodCategory = 'Energetic' THEN 'You are tired but only worked for an hour? Get some more work done ;)' WHEN moodCategory = 'Fit' THEN 'Stay consistent ;)' ELSE NULL END) STORED
 );
 
 
