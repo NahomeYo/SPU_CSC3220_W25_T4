@@ -1,5 +1,5 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Tue Feb 17 11:19:08 2025
+-- File generated with SQLiteStudio v3.4.16 on Fri Feb 21 21:47:49 2025
 --
 -- Text encoding used: UTF-8
 --
@@ -12,11 +12,10 @@ CREATE TABLE REFLECTION (
     taskId           INTEGER REFERENCES TASK (taskID),
     moodCategory     TEXT,
     entryJournalText TEXT    NOT NULL,
-    moodRating       INTEGER CHECK (moodRating BETWEEN 1 AND 5),
-    date             TEXT
+    moodRating       INTEGER CHECK (moodRating BETWEEN 1 AND 5) 
 );
 
-INSERT INTO REFLECTION (reflectionId, taskId, moodCategory, entryJournalText, moodRating, date) VALUES (1, 1, NULL, 'Schema design needs more queries.', 4, NULL);
+INSERT INTO REFLECTION (reflectionId, taskId, moodCategory, entryJournalText, moodRating) VALUES (1, 1, NULL, 'Schema design needs more queries.', 4);
 
 -- Table: SCHEDULE
 CREATE TABLE SCHEDULE (
@@ -29,6 +28,8 @@ CREATE TABLE SCHEDULE (
     recurrencePattern TEXT    CHECK (recurrencePattern IN ('daily', 'weekly', 'monthly') ) 
 );
 
+INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (1, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
+INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (2, 'CSC 3220', NULL, '2025-02-15', 0, NULL);
 INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (3, 'CSC 3220', NULL, '2025-02-15', 1, 'weekly');
 INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (4, 'UFDN 3100', NULL, '2025-02-15', 1, 'daily');
 
