@@ -1,13 +1,13 @@
 --
--- File generated with SQLiteStudio v3.4.16 on Sat Feb 22 12:57:20 2025
+-- File generated with SQLiteStudio v3.4.16 on Fri Feb 21 23:37:27 2025
 --
 -- Text encoding used: UTF-8
 --
 PRAGMA foreign_keys = off;
 BEGIN TRANSACTION;
 
--- Table: Schedule
-CREATE TABLE Schedule (
+-- Table: SCHEDULE
+CREATE TABLE SCHEDULE (
     scheduleId        INTEGER PRIMARY KEY AUTOINCREMENT,
     title             TEXT    NOT NULL,
     description       TEXT,
@@ -21,21 +21,19 @@ CREATE TABLE Schedule (
 
 -- Table: TASK
 CREATE TABLE TASK (
-    taskID            INTEGER PRIMARY KEY AUTOINCREMENT,
+    taskId            INTEGER PRIMARY KEY AUTOINCREMENT,
     scheduleId        INTEGER NOT NULL
-                              REFERENCES Schedule (scheduleId),
+                              REFERENCES SCHEDULE (scheduleId),
     title             TEXT    NOT NULL,
     deadline          INTEGER NOT NULL
                               CHECK (deadline > strftime('%s', 'now') ),
     priority          INTEGER CHECK (priority BETWEEN 1 AND 5),
     createdAt         INTEGER NOT NULL
                               DEFAULT (strftime('%s', 'now') ),
-    startTime         INTEGER CHECK (startTime >= createdAt) 
-                              NOT NULL,
-    endTime           INTEGER CHECK (endTime > startTime) 
-                              NOT NULL,
+    startTime         INTEGER CHECK (startTime >= createdAt),
+    endTime           INTEGER CHECK (endTime > startTime),
     duration          INTEGER AS ( (endTime - startTime) ) STORED,
-    deadlineCountdown INTEGER AS (deadline - strftime('%s', 'now') ) STORED,
+    deadlineCountdown INTEGER AS (deadline - createdAt) STORED,
     status            TEXT    DEFAULT ('Pending') 
                               CHECK (status IN ('Pending', 'In Progress', 'Completed') ),
     energyScale       INTEGER CHECK (energyScale BETWEEN 1 AND 5),

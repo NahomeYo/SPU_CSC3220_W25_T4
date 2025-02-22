@@ -45,6 +45,10 @@ recurrencePattern is TEXT data type and has constraints:
 2/18 :
 
 
-i think our code is totally right now but Do you think we need to
+I think our code is totally right now but Do you think we need to?
+
 - The SCHEDULE table has two identical rows, which might not be necessary. So either remove the redundant row or differentiate the data (change the title or date).
 
+
+2/20: 
+- We need to get rid of the REFLECTION Table and move everything to the TASK Table (moodCategory, entryJournalText and  moodRating)

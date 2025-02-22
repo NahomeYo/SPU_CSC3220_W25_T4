@@ -22,3 +22,14 @@ Then DELETE
 
 - INSERT two schedules, one for this class and the other for another class (UFDN? MATH? etc)
 - The date attribute should be NULL for reflection and schedule entities. Perhaps we can remove the date attribute for schedule and only make it NOT NULL constraint for task entity. 
+
+
+2/20: 
+
+Professor's feedback:
+
+In your ERD, you show the Task Entity and the Reflection entity with a mandatory 1 to 1 relationship. When a mandatory one-to-one relationship exists, it is simpler to combine them into a single table rather than two tables. What you show is not wrong, but it could be simplified without loss, which is usually better.
+
+Also, you may want to consider removing some of the constraints from the Database in favor of building those constraints into the Application. It is generally easier to change application software than the structure of a database when a change is requested. But that is a design decision and not necessarily wrong the way you have. it.
+
+I see that you removed the User entity. I think that is good. You don't need it for this app.
