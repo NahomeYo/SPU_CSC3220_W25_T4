@@ -18,6 +18,7 @@ CREATE TABLE SCHEDULE (
     recurrencePattern TEXT    CHECK (recurrencePattern IN ('daily', 'weekly', 'monthly') ) 
 );
 
+INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (2, 'CSC 3220', 'Course assignments and deadlines', '2025-02-21', 0, NULL);
 
 -- Table: TASK
 CREATE TABLE TASK (
@@ -25,8 +26,7 @@ CREATE TABLE TASK (
     scheduleId        INTEGER NOT NULL
                               REFERENCES SCHEDULE (scheduleId),
     title             TEXT    NOT NULL,
-    deadline          INTEGER NOT NULL
-                              CHECK (deadline > strftime('%s', 'now') ),
+    deadline          INTEGER NOT NULL,
     priority          INTEGER CHECK (priority BETWEEN 1 AND 5),
     createdAt         INTEGER NOT NULL
                               DEFAULT (strftime('%s', 'now') ),

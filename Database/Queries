@@ -1,10 +1,9 @@
-SELECT T.taskId, T.title AS task_title, S.title AS schedule_title, 
-       T.deadline, T.deadlineCountdown, T.status
+SELECT T.taskId, T.title AS task_title, S.title AS schedule_title,
+    T.deadline, T.deadlineCountdown, T.status
 FROM TASK T
 JOIN SCHEDULE S ON T.scheduleId = S.scheduleId
 WHERE S.title = 'CSC 3220';
 
-BEGIN TRANSACTION;
 UPDATE TASK
 SET status = 'In Progress', startTime = strftime('%s', '2025-02-21 21:30:00')
 WHERE title = 'Draft Persona and Moodboard and presentation';
@@ -14,32 +13,23 @@ SET status = 'Completed', endTime = strftime('%s', '2025-02-21 21:30:00') + 7200
 WHERE title = 'Final DB Schema and Queries';
 
 UPDATE TASK
-SET deadlineCountdown = deadline - strftime('%s', '2025-02-21 21:30:00')
+SET createdAt = strftime('%s', '2025-02-21 21:30:00')
 WHERE title IN ('Draft Persona and Moodboard and presentation', 'Final DB Schema and Queries');
-COMMIT;
 
-BEGIN TRANSACTION;
 INSERT INTO SCHEDULE (title, description, date, isRecurring, recurrencePattern)
 VALUES ('CSC 3220', 'Course assignments and deadlines', '2025-02-21', 0, NULL);
 
 INSERT INTO TASK (scheduleId, title, deadline, priority, createdAt, startTime, endTime, status)
-VALUES ((SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220'), 
-        'Draft Persona and Moodboard and presentation', 
-        strftime('%s', '2025-02-25 04:59:00'), 3, 
-        strftime('%s', '2025-02-21 21:30:00'), NULL, NULL, 'Pending');
+VALUES ((SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220'),
+    'Draft Persona and Moodboard and presentation',
+    strftime('%s', '2025-02-25 04:59:00'), 3,
+    strftime('%s', '2025-02-21 21:30:00'), NULL, NULL, 'Pending');
 
 INSERT INTO TASK (scheduleId, title, deadline, priority, createdAt, startTime, endTime, status)
-VALUES ((SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220'), 
-        'Final DB Schema and Queries',
-        strftime('%s', '2025-02-26 04:59:00'), 5, 
-        strftime('%s', '2025-02-21 21:30:00'), NULL, NULL, 'In Progress');
+VALUES ((SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220'),
+    'Final DB Schema and Queries',
+    strftime('%s', '2025-02-26 04:59:00'), 5,
+    strftime('%s', '2025-02-21 21:30:00'), NULL, NULL, 'In Progress');
 
-UPDATE TASK
-SET deadlineCountdown = deadline - strftime('%s', '2025-02-21 21:30:00')
-WHERE scheduleId = (SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220');
-COMMIT;
-
-BEGIN TRANSACTION;
 DELETE FROM TASK WHERE scheduleId = (SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220');
 DELETE FROM SCHEDULE WHERE title = 'CSC 3220';
-COMMIT;
