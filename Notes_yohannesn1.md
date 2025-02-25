@@ -33,3 +33,9 @@ In your ERD, you show the Task Entity and the Reflection entity with a mandatory
 Also, you may want to consider removing some of the constraints from the Database in favor of building those constraints into the Application. It is generally easier to change application software than the structure of a database when a change is requested. But that is a design decision and not necessarily wrong the way you have. it.
 
 I see that you removed the User entity. I think that is good. You don't need it for this app.
+
+
+2/24:
+- For the moodboard, we must list the HEX color sequence on next to or inside the color blocks
+- We also have to put a description of the interface on the bottom right of the moodboard
+- For the body text, also list the font name for it like how the subHeader and Header's font names are displayed

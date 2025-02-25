@@ -18,7 +18,7 @@ CREATE TABLE SCHEDULE (
     recurrencePattern TEXT    CHECK (recurrencePattern IN ('daily', 'weekly', 'monthly') ) 
 );
 
-INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (2, 'CSC 3220', 'Course assignments and deadlines', '2025-02-21', 0, NULL);
+INSERT INTO SCHEDULE (scheduleId, title, description, date, isRecurring, recurrencePattern) VALUES (5, 'CSC 3220', 'Assignments and deadlines for Applications Programming w/ Dr. Vickers', '2025-02-21', 0, NULL);
 
 -- Table: TASK
 CREATE TABLE TASK (
@@ -44,6 +44,8 @@ CREATE TABLE TASK (
     motivationMessage TEXT    AS (CASE WHEN moodCategory = 'Exhausted' THEN 'You could use a break! Relax ;)' WHEN moodCategory = 'Energetic' THEN 'You are tired but only worked for an hour? Get some more work done ;)' WHEN moodCategory = 'Fit' THEN 'Stay consistent ;)' ELSE NULL END) STORED
 );
 
+INSERT INTO TASK (taskId, scheduleId, title, deadline, priority, createdAt, startTime, endTime, status, energyScale, entryJournalText) VALUES (6, 5, 'FINAL DB Schema', 1740182399, 5, 1740157200, NULL, NULL, 'In Progress', NULL, NULL);
+INSERT INTO TASK (taskId, scheduleId, title, deadline, priority, createdAt, startTime, endTime, status, energyScale, entryJournalText) VALUES (7, 5, 'Moodboard and Persona Draft', 1740441599, 4, 1740157200, NULL, NULL, 'Pending', NULL, NULL);
 
 COMMIT TRANSACTION;
 PRAGMA foreign_keys = on;

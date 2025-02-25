@@ -34,19 +34,17 @@ SET
     status = 'Completed', 
     startTime = strftime('%s', '2025-02-21 17:00:00'), 
     endTime = strftime('%s', '2025-02-21 19:30:00'), 
-    duration = strftime('%s', '2025-02-21 19:30:00') - strftime('%s', '2025-02-21 17:00:00'), 
-    deadlineCountdown = strftime('%s', '2025-02-21 23:59:59') - strftime('%s', '2025-02-21 17:00:00'), 
     energyScale = 4, 
     entryJournalText = '2 and 1/2 hours of straight focus and I still got gas left in the tank! Bring on my next task!'
 WHERE title = 'FINAL DB Schema';
 
-DELETE FROM TASK WHERE title = 'FINAL DB Schema';
-
 UPDATE TASK 
 SET 
     status = 'In Progress', 
-    startTime = strftime('%s', '2025-02-21 19:30:00')
+    startTime = strftime('%s', '2025-02-21 19:30:00') 
 WHERE title = 'Moodboard and Persona Draft';
+
+DELETE FROM TASK WHERE title = 'FINAL DB Schema';
 
 SELECT 
     T.taskId, 
