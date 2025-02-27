@@ -39,3 +39,9 @@ I see that you removed the User entity. I think that is good. You don't need it 
 - For the moodboard, we must list the HEX color sequence on next to or inside the color blocks
 - We also have to put a description of the interface on the bottom right of the moodboard
 - For the body text, also list the font name for it like how the subHeader and Header's font names are displayed
+
+2/25:
+
+For the final draft of our moodbaord:
+-Create all the icons (EVERYTHING THAT REGARDS THE SCHEDULE AND TASK COLUMN!)
+-Replace the generic images of the calender, schedule and clocks with a professional.
