@@ -1,0 +1,73 @@
+INSERT INTO SCHEDULE (title, description, date, isRecurring, recurrencePattern) 
+VALUES 
+    ('CSC 3220', 'Assignments and deadlines for Applications Programming w/ Dr. Vickers', '2025-02-21', 0, NULL);
+
+INSERT INTO TASK (scheduleId, title, deadline, priority, createdAt, startTime, endTime, status, energyScale, entryJournalText) 
+VALUES 
+    (
+        (SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220'), 
+        'FINAL DB Schema',
+        strftime('%s', '2025-02-21 23:59:59'), 
+        5, 
+        strftime('%s', '2025-02-21 17:00:00'), 
+        NULL, 
+        NULL, 
+        'In Progress', 
+        NULL, 
+        NULL
+    ),
+    (
+        (SELECT scheduleId FROM SCHEDULE WHERE title = 'CSC 3220'), 
+        'Moodboard and Persona Draft',
+        strftime('%s', '2025-02-24 23:59:59'), 
+        4, 
+        strftime('%s', '2025-02-21 17:00:00'), 
+        NULL, 
+        NULL,  
+        'Pending', 
+        NULL, 
+        NULL
+    );
+
+UPDATE TASK 
+SET 
+    status = 'Completed', 
+    startTime = strftime('%s', '2025-02-21 17:00:00'), 
+    endTime = strftime('%s', '2025-02-21 19:30:00'), 
+    energyScale = 4, 
+    entryJournalText = '2 and 1/2 hours of straight focus and I still got gas left in the tank! Bring on my next task!'
+WHERE title = 'FINAL DB Schema';
+
+UPDATE TASK 
+SET 
+    status = 'In Progress', 
+    startTime = strftime('%s', '2025-02-21 19:30:00') 
+WHERE title = 'Moodboard and Persona Draft';
+
+DELETE FROM TASK WHERE title = 'FINAL DB Schema';
+
+SELECT 
+    T.taskId, 
+    T.scheduleId, 
+    T.title, 
+    T.deadline, 
+    T.priority, 
+    T.createdAt, 
+    T.startTime, 
+    T.endTime, 
+    T.duration, 
+    T.deadlineCountdown, 
+    T.status, 
+    T.energyScale, 
+    T.entryJournalText, 
+    T.moodCategory, 
+    T.motivationMessage, 
+    S.scheduleId, 
+    S.title AS scheduleTitle, 
+    S.description, 
+    S.date, 
+    S.isRecurring, 
+    S.recurrencePattern
+FROM TASK T
+JOIN SCHEDULE S ON T.scheduleId = S.scheduleId
+WHERE S.title = 'CSC 3220';

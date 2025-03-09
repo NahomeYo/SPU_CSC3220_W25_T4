@@ -1,0 +1,53 @@
+﻿Team 4's Application: Academia(OS)  
+1.) Description:  
+Academia(OS) is an application that helps students handle their schoolwork smartly. Unlike Canvas, this app boosts students' productivity and cares about their mental health. The purpose of Academia (OS) is to encourage students to take control of their schooling while considering their state of mind and overall health. 
+
+
+2.) Abilities:  
+
+
+Academia(OS) will let users create data:  
+* Make personalized schedules and planners.  
+* Add tasks with deadlines, priorities, and estimated times.  
+* Set focus blocks with timers.  
+* They can use an algorithm to track their feelings every day. They can select an emoji that best expresses their current mood or grade it on a scale of 1 to 10.
+* Write journal entries.  
+Academia(OS) will also allow users to retrieve data:  
+* Check schedules, tasks, and deadlines.  
+* Look at past mood tracker entries.  
+* Review previous journal entries.  
+* Search for tasks by keyword or due date.  
+Academia(OS) will enable users to update data:  
+* Change task details like deadlines, priorities, and estimated times.  
+* Modify schedules and planners.  
+* Update mood tracker entries.  
+* Edit journal entries.  
+Lastly, Academia(OS) will let users delete data:  
+* Remove completed tasks.  
+* Delete schedules or planners.  
+* Erase mood tracker entries.  
+* Delete journal entries.  
+
+
+3.) Functionality:  
+
+
+Task Management 
+* Track progress and keep an eye on deadlines.  
+* Analyzing the mood data. If someone shares a low number on the scale on busy workdays, the app might recommend changing their schedule or taking more breaks to help them feel better.
+ 
+Study Planning  
+* Make personalized study plans with flexible scheduling.  
+* Include breaks and reminders for mindfulness.  
+ 
+4.) Data Management:
+Local Data Storage
+All user information is saved directly on the device, which helps keep it private and safe.
+
+
+Data Export and Backup
+Users can manually back up their data to an external storage device.
+
+
+Security and Privacy
+Make sure that the data is safely stored in an encrypted SQLite database.

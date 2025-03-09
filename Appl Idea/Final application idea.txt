@@ -1,0 +1,76 @@
+﻿Team 4's Application: Academia(OS)  
+1.) Description:
+  
+Academia(OS) is an application that helps students handle their schoolwork smartly. Unlike Canvas, this app boosts students' productivity and cares about their mental health. The purpose of Academia (OS) is to encourage students to take control of their schooling while considering their state of mind and overall health. 
+
+
+2.) Abilities:  
+
+
+Academia(OS) will let users create data:  
+* Make personalized schedules and planners.  
+* Add tasks with deadlines, priorities, and estimated times.  
+* Set focus blocks with timers.  
+* They can use an algorithm to track their feelings every day. They can select an emoji that best expresses their current mood or grade it on a scale of 1 to 10.
+* Write journal entries.  
+Academia(OS) will also allow users to retrieve data:  
+* Check schedules, tasks, and deadlines.  
+* Look at past mood tracker entries.  
+* Review previous journal entries.  
+* Search for functions by keyword or due date.  
+Academia(OS) will enable users to update data:  
+* Change task details like deadlines, priorities, and estimated times.  
+* Modify schedules and planners.  
+* Update mood tracker entries.  
+* Edit journal entries.  
+Lastly, Academia(OS) will let users delete data:  
+* Remove completed tasks.  
+* Delete schedules or planners.  
+* Erase mood tracker entries.  
+* Delete journal entries.  
+
+
+3.) Functionality:  
+
+
+Task Management 
+* Track progress and keep an eye on deadlines.  
+* Analyzing the mood data. If someone shares a low number on the scale on busy workdays, the app might recommend changing their schedule or taking more breaks to help them feel better.
+ 
+Study Planning  
+* Make personalized study plans with flexible scheduling.  
+* Include breaks and reminders for mindfulness.  
+ 
+4.) Data Management:
+
+
+One-Way Syncing with Remote Data
+* Academic (OS) will get basic data (such as class schedules and due dates for assignments) from a remote source, such as a university's educational system, such as Canvas.
+* This reduces the need for manual data entry and guarantees that students always have access to the most recent information.
+* Users can manage and personalize their tasks, calendars, and mental health tracking remotely after pulling the base data. No local changes are synchronized with the distant source; they stay on the device.
+Local Data Storage
+* All user-generated data (e.g., mood tracker entries, journal entries, personalized schedules) is stored locally on the device.
+* This approach ensures privacy and security, as sensitive information is not shared with external servers.
+Data Export and Backup
+* Users can manually export their local data (e.g., mood tracker history and journal entries) to an external storage device for backup.
+* The app does not automatically sync local data to any remote server, giving users complete control over their information.
+Security and Privacy
+* Local data is stored in an encrypted SQLite database to ensure it remains secure.
+* The app does not push local changes back to the remote source, maintaining the integrity of the institution's data and protecting user privacy.
+
+
+5.) Application Architecture:  
+
+
+Academia(OS) will use a layered structure that includes the following parts:  
+* Presentation Layer (UI): This is what users see and interact with. It will follow a Model-View-Controller (MVC) setup:  
+
+
+* Model: This part keeps all the app's information, like tasks, schedules, and mood logs.  
+* View: These visual parts of the UI show the information from the Model.  
+* Controller: This part handles how users interact with the app, updates the Model, and refreshes the View.  
+
+
+* Business Logic Layer: This layer includes the main functions of the app, like managing tasks, scheduling, analyzing moods, and checking data for accuracy.  
+* Data Access Layer: This part deals with the local SQLite database, keeping the details of how the database works separate from the Business Logic Layer.  
+* Service Layer: If the app connects with outside services (like Canvas), this layer will handle the communication with those services.
