@@ -55,3 +55,6 @@ For the final draft of our moodbaord:
 
 -The main, primary button for the windows page is "create schedule" so when the user presses on the button, they're navigated to a pop-up, filled with options (of which we already came up with inside the schedula schema table).
 
+3/14:
+The wireframe just needs light touch ups! Consistent button sizes, colors, etc
+
